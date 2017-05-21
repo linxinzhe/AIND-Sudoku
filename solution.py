@@ -52,16 +52,20 @@ def naked_twins(values):
         for box in unit:
             value = values[box]
             if len(value) == 2:
-                naked_twins_list.append((box, value))
+                naked_twins_list.append(value)
 
-        if len(naked_twins_list) == 2:
-            (box1, twins1), (box2, twins2) = naked_twins_list
-            if twins1 == twins2:
+        naked_twins_list = sorted(naked_twins_list)  # sort and twins will be adjacent
+
+        len_list = len(naked_twins_list)
+        for i in range(len_list):
+            # test if there are twins adjacent
+            if i + 1 < len_list and naked_twins_list[i] == naked_twins_list[i + 1]:
                 # Eliminate the naked twins as possibilities in the unit
-                n1, n2 = twins1
+                twins = naked_twins_list[i]
+                n1, n2 = twins
                 for box in unit:
                     value = values[box]
-                    if len(value) > 1 and box != box1 and box != box2:
+                    if len(value) > 1 and value != twins:
                         value = value.replace(n1, "")
                         value = value.replace(n2, "")
                         assign_value(values, box, value)
