@@ -3,11 +3,11 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: We apply constraint propagation strategy in this way. First, we find out naked twins in each unit. Then, if a unit exists naked twins we need to remove the twins from other boxes which contain possibilities of numbers in that unit. We continue until we iterate all units.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: Differ from normal sudoku, diagonal sudoku enforces a new constraint on diagonal. So units in sudoku contain diagonal unit now and also boxes in diagonal have diagonal peers. When we apply constraint propagation strategies of elimination and deep first search, we need to add the diagonal constraint in them in order to solve diagonal sudoku problem.
 
 ### Install
 
