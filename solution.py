@@ -51,18 +51,19 @@ def naked_twins(values):
         # Find all instances of naked twins in a unit
         for box in unit:
             value = values[box]
-            if value == 2:
+            if len(value) == 2:
                 naked_twins_list.append((box, value))
 
         if len(naked_twins_list) == 2:
             (box1, twins1), (box2, twins2) = naked_twins_list
             if twins1 == twins2:
                 # Eliminate the naked twins as possibilities in the unit
+                n1, n2 = twins1
                 for box in unit:
                     value = values[box]
-                    if value > 1 and box != box1 and box != box2:
-                        value = value.replace(twins1, "")
-                        value = value.replace(twins2, "")
+                    if len(value) > 1 and box != box1 and box != box2:
+                        value = value.replace(n1, "")
+                        value = value.replace(n2, "")
                         assign_value(values, box, value)
     return values
 
