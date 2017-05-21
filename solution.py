@@ -34,6 +34,8 @@ def assign_value(values, box, value):
     values[box] = value
     if len(value) == 1:
         assignments.append(values.copy())
+        # print("*************")
+        # display(assignments[-1])
     return values
 
 
@@ -106,14 +108,15 @@ def display(values):
 
 
 def eliminate(values):
-    for box, value in values.items():
-        if len(value) == 1:
-            for peer_box in peers[box]:
-                peer_value = values[peer_box]
-                if value in peer_value:
-                    if value != peer_value:
-                        value = peer_value.replace(value, "")
-                        assign_value(values, peer_box, value)
+    solved_values = dict(filter(lambda x: len(x[1]) == 1, values.items()))  # box with only one possibility remains
+
+    for box in solved_values:
+        digit = values[box]
+        for peer in peers[box]:
+            # eliminate its peers
+            peer_value = values[peer]
+            peer_value = peer_value.replace(digit, '')
+            assign_value(values, peer, peer_value)
     return values
 
 

@@ -23,16 +23,18 @@ naked_twins_example = {"G7": "1569", "G6": "134568", "G5": "13568", "G4": "13456
 sudoku_example = "9.1....8.8.5.7..4.2.4....6...7......5..............83.3..6......9................"
 
 
-class TestNakedTwinsFunction(unittest.TestCase):
-    def test_not_contain_naked_twins(self):
-        display(naked_twins_example)
-        values = naked_twins(naked_twins_example)
-        print("-----")
-        display(values)
+# class TestNakedTwinsFunction(unittest.TestCase):
+#     def test_not_contain_naked_twins(self):
+#         display(naked_twins_example)
+#         values = naked_twins(naked_twins_example)
+#         print("-----")
+#         display(values)
 
 
 class TestSolveFunction(unittest.TestCase):
     def test_solve_not_false(self):
+        display(grid_values(sudoku_example))
+        print("()()()()()()()(")
         result = solve(sudoku_example)
         self.assertTrue(result)
         display(result)
